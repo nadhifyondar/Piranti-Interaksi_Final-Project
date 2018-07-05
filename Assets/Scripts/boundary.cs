@@ -10,5 +10,4 @@ public class boundary : MonoBehaviour {
 		col.GetComponent<basketball> ().DecreaseRemainingBalls ();
 		col.GetComponent<basketball> ().ChangeText ();
 	}
-
 }

@@ -9,7 +9,8 @@ public class basketball : MonoBehaviour {
 	public Text remainingballs;
 
 	private int currentscore = 0;
-	public int remainingballs_number = 3;
+	private int remainingballs_number = 3;
+
 	private Vector3 InitialPosition;
 
 	void Start()
@@ -18,18 +19,19 @@ public class basketball : MonoBehaviour {
 		ChangeText ();
 	}
 
-	void OnTriggerEnter(Collider col)
+	void OnTriggerEnter (Collider col)
 	{
-		if (col.gameObject.tag == "Ring") 
-		{
+		if (col.gameObject.tag == "Ring")
+			{
 			ScoreUpdate ();
 			remainingballs_number++;
-		}
+			}
 	}
 
 	public void DecreaseRemainingBalls()
 	{
 		remainingballs_number--;
+		ChangeText ();
 	}
 
 	public void ChangeText()
@@ -37,7 +39,8 @@ public class basketball : MonoBehaviour {
 		remainingballs.text = "Remaining Balls: " + remainingballs_number.ToString ();
 	}
 
-	private void ScoreUpdate(){
+	private void ScoreUpdate()
+	{
 		currentscore++;
 		score.text = currentscore.ToString ();
 	}
@@ -45,8 +48,5 @@ public class basketball : MonoBehaviour {
 	public void ResetPosition()
 	{
 		this.transform.position = InitialPosition;
-		this.GetComponent<Rigidbody>().useGravity = false;
-		this.GetComponent<Rigidbody>().isKinematic = true;
-		this.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 	}
 }
